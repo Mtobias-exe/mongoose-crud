@@ -44,4 +44,18 @@ router.put('/:id', async(req, res)=>{
     }
 })
 
+
+
+router.delete('/:id', async (req, res)=>{
+    try {
+    const deletedFruit = await Fruit.findByIdAndDelete(req.params.id);
+    res.json(deletedFruit);
+    } catch (error) {
+    res.status(500).json({error: error.message})
+    }
+    
+    
+})
+
+
 module.exports = router;
